@@ -7,11 +7,19 @@ metadata:
   argument-hint: <file-or-pattern>
 ---
 
-# Contentful Integration Guide
+# Contentful Integration
 
 Best practices for integrating Contentful CMS with Next.js applications.
 
-## Dependencies
+## When to Use
+
+- Use this skill when integrating Contentful CMS with Next.js applications
+- This skill is helpful for setting up Contentful clients, configuring environments, and querying content
+- Use when working with Contentful API queries, preview mode, or type generation
+
+## Instructions
+
+### Dependencies
 
 **Required packages:**
 
@@ -29,7 +37,7 @@ Best practices for integrating Contentful CMS with Next.js applications.
 }
 ```
 
-## Environment Variables
+### Environment Variables
 
 **Required variables:**
 
@@ -42,7 +50,7 @@ CONTENTFUL_MANAGEMENT_TOKEN=""
 CONTENTFUL_ENVIRONMENT=""
 ```
 
-## Setup Scripts
+### Setup Scripts
 
 **Add to package.json:**
 
@@ -72,28 +80,28 @@ CONTENTFUL_ENVIRONMENT=""
 - Always use `development` environment for local development
 - Never share management token
 
-## Environments
+### Environments
 
-### Environment Types
+**Environment Types:**
 
 - **Environment** - Container entities within a space for isolated content type versions
 - **Environment Alias** - Static ID that points to a target environment (can be switched)
 - **Custom Alias** - Custom environment aliases (Premium tier only)
 
-### Best Practices
+**Best Practices:**
 
 - **Production:** Use `master` environment or `master` alias
 - **Everything else:** Sandbox environments for development/testing
 - **Never use sandbox environments for production**
 
-### Local Development
+**Local Development:**
 
 - Set environment ID in `.env` or `.env.local`
 - **Do not use `master` environment for local development**
 - Clone from production environment for local testing
 - Connect to sandbox environment for iteration
 
-### Staging/QA
+**Staging/QA:**
 
 - Set environment ID in CI/CD pipeline
 - **Do not use `master` environment for staging/QA**
@@ -107,15 +115,13 @@ CONTENTFUL_ENVIRONMENT=""
 4. If tests pass, apply to staging for final testing
 5. Finally, apply to `master` environment
 
-### Editorial Workflows
-
-**Recommended approach:**
+**Editorial Workflows:**
 
 - Editors work with content in `master` environment or `master` alias
 - Developers work on new features in sandbox environments
 - Changes applied from sandbox to `master` when ready
 
-### Custom Aliases
+**Custom Aliases:**
 
 - Can create custom environment aliases (e.g., `development`, `staging`)
 - **Limitations:**
@@ -123,7 +129,7 @@ CONTENTFUL_ENVIRONMENT=""
   - Requests to non-`master` environments are not cached or covered by SLAs
   - Available to Premium tier customers only
 
-## Type Generation
+### Type Generation
 
 **Generate TypeScript types:**
 
@@ -147,7 +153,7 @@ const entry: BlogPost = {
 };
 ```
 
-## Contentful Client Setup
+### Contentful Client Setup
 
 **Create client:**
 
@@ -169,7 +175,7 @@ const previewClient = createClient({
 });
 ```
 
-## Common Patterns
+### Common Patterns
 
 **Fetch entries:**
 
@@ -199,7 +205,7 @@ const entries = await client.getEntries({
 const entry = entries.items[0];
 ```
 
-## Next.js Integration
+### Next.js Integration
 
 **Using Vercel Next.js Toolkit:**
 

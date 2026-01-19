@@ -10,7 +10,15 @@ metadata:
 
 Guide for creating and managing Contentful migration scripts to version control content model changes.
 
-## When to Use Migrations
+## When to Use
+
+- Use this skill when creating or modifying Contentful migration scripts
+- This skill is helpful for version controlling content model changes, transforming data, and ensuring consistency across environments
+- Use when you need to make breaking changes, rename fields, or modify content types programmatically
+
+## Instructions
+
+### When to Use Migrations
 
 **Required for:**
 
@@ -27,9 +35,9 @@ Guide for creating and managing Contentful migration scripts to version control 
 
 **Manual changes** are fine for prototyping, but **migration scripts** provide version control and consistency across environments.
 
-## Migration Process
+### Migration Process
 
-### 1. Write Migration Scripts
+**1. Write migration scripts:**
 
 Create migration files using the Contentful Migration DSL:
 
@@ -48,19 +56,19 @@ module.exports = function (migration) {
 };
 ```
 
-### 2. Create Test Environment
+**2. Create test environment:**
 
 ```bash
 contentful space environment create --environment-id test-migration
 ```
 
-### 3. Test in Sandbox
+**3. Test in sandbox:**
 
 ```bash
 contentful space migration --environment-id test-migration migrations/add-blog-author-field.js
 ```
 
-### 4. Apply to Production
+**4. Apply to production:**
 
 Once tested, apply to master environment:
 
@@ -68,23 +76,23 @@ Once tested, apply to master environment:
 contentful space migration --environment-id master migrations/add-blog-author-field.js
 ```
 
-## Migration Best Practices
+### Migration Best Practices
 
-### Script Organization
+**Script organization:**
 
 - Keep migrations small and focused on single changes
 - Use descriptive filenames with timestamps: `2024-01-15-add-blog-author-field.js`
 - Store migrations in version control
 - Document complex transformations
 
-### Testing Strategy
+**Testing strategy:**
 
 - Always test migrations in sandbox environments first
 - Verify content model changes don't break existing entries
 - Test rollback procedures when possible
 - Use `--dry-run` flag to preview changes
 
-### Content Transformation
+**Content transformation:**
 
 When modifying existing content types, handle data migration carefully:
 
@@ -113,7 +121,7 @@ module.exports = function (migration) {
 };
 ```
 
-### Rollback Considerations
+**Rollback considerations:**
 
 While Contentful doesn't provide automatic rollback for migrations, you can:
 
@@ -121,9 +129,9 @@ While Contentful doesn't provide automatic rollback for migrations, you can:
 - Keep migration scripts in version control for reference
 - Document manual rollback procedures for complex changes
 
-## Common Migration Patterns
+### Common Migration Patterns
 
-### Adding a Field
+**Adding a field:**
 
 ```javascript
 module.exports = function (migration) {
@@ -133,7 +141,7 @@ module.exports = function (migration) {
 };
 ```
 
-### Deleting a Field
+**Deleting a field:**
 
 ```javascript
 module.exports = function (migration) {
@@ -142,7 +150,7 @@ module.exports = function (migration) {
 };
 ```
 
-### Changing Field Type
+**Changing field type:**
 
 ```javascript
 module.exports = function (migration) {
@@ -153,7 +161,7 @@ module.exports = function (migration) {
 };
 ```
 
-### Adding Validation
+**Adding validation:**
 
 ```javascript
 module.exports = function (migration) {
