@@ -1,10 +1,6 @@
 ---
 name: contentful-integration
 description: Guide for integrating Contentful CMS with Next.js applications. Use when asked to "integrate Contentful with Next.js", "setup Contentful for Next.js" or "work on the Contentful query".
-metadata:
-  author: axioned
-  version: "1.0.0"
-  argument-hint: <file-or-pattern>
 ---
 
 # Contentful Integration

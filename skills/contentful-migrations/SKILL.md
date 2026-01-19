@@ -1,9 +1,6 @@
 ---
 name: contentful-migrations
 description: Guide for creating and managing Contentful migration scripts. Use when asked to "create a Contentful migration", "modify content types programmatically", "transform Contentful data", or "version control content model changes".
-metadata:
-  author: axioned
-  version: "1.0.0"
 ---
 
 # Contentful Migrations
